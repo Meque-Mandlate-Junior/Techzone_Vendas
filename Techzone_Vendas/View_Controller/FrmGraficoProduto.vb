@@ -45,8 +45,8 @@ Public Class FrmGraficoProduto
 
 
     Private Sub FrmGraficoProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
- 
-            Dim command As OleDbCommand
+        chartLucro.ChartAreas(0).AxisX.Interval = 1
+        Dim command As OleDbCommand
             Dim sql As String
             Dim dataReader As OleDbDataReader
             Dim valorEntradas As Double = 0

@@ -48,10 +48,8 @@ Partial Class FrmGraficoProduto
         Series1.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Series1.IsValueShownAsLabel = True
         Series1.IsXValueIndexed = True
-        Series1.MarkerSize = 0
-        Series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Square
+        Series1.MarkerSize = 1
         Series1.Name = "Lucro"
-        Series1.YValuesPerPoint = 5
         Me.chartLucro.Series.Add(Series1)
         Me.chartLucro.Size = New System.Drawing.Size(860, 462)
         Me.chartLucro.TabIndex = 1

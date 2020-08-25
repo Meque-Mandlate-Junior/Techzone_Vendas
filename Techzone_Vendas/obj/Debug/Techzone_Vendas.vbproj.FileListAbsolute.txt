@@ -24,6 +24,7 @@ C:\Sistema VB\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmRepor
 C:\Sistema VB\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmControlProduto.resources
 C:\Sistema VB\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Grafico.resources
 C:\Sistema VB\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmGraficoProduto.resources
+<<<<<<< HEAD
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.exe.config
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.exe
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.xml
@@ -50,3 +51,30 @@ C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Resources.resources
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.vbproj.GenerateResource.Cache
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.frmConfiguracaoesBD.resources
+=======
+C:\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.exe.config
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.exe
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.xml
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.pdb
+C:\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.exe
+C:\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.pdb
+C:\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.xml
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.vbprojResolveAssemblyReference.cache
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmFiltroRelatorio.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmControlProduto.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmGraficoProduto.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmReportView.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmRegistosMov.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmCliente.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmFornecedor.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmMovimentoEntrada.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmMovimentoSaida.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmPrincipal.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmProduto.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmStock.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.FrmTipoMovimento.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Grafico.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.LoginForm1.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Resources.resources
+C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.vbproj.GenerateResource.Cache
+>>>>>>> e713a77d6c504f5fe19eba0fab8911ec73e3e91e

@@ -12,12 +12,12 @@ Public Class FrmStock
             Dim qtdEntrada As Integer = 0
             Dim qtdSaida As Integer = 0
             Try
-                ConnectionString.Connection()
+                ConnectionString.openConnectionAccess()
                 sql = "SELECT TipoMovimento.operacao, MovimentoProduto.qtd FROM ((MovimentoProduto " & _
                     "INNER JOIN Movimento ON MovimentoProduto.movimento = Movimento.codigo) " & _
                     "INNER JOIN TipoMovimento ON Movimento.tipoMovimento = TipoMovimento.nome) " & _
                     "Where MovimentoProduto.produto =" & prod.codigoProduto & ""
-                command = New OleDbCommand(sql, ConnectionString.conexao)
+                command = New OleDbCommand(sql, ConnectionString.conexaoAccess)
                 dataReader = command.ExecuteReader()
                 Do While dataReader.Read = True
                     If (dataReader(0) = "Entrada") Then
@@ -29,7 +29,7 @@ Public Class FrmStock
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
-            ConnectionString.conexao.Close()
+            ConnectionString.conexaoAccess.Close()
             Dim total As Double = qtdEntrada - qtdSaida
             dgvStock.Rows.Add(prod.nomeProduto, Convert.ToString(total))
 

@@ -56,17 +56,17 @@ Public Class FrmGraficoProduto
         Dim data As DateTime
             Try
 
-                ConnectionString.Connection()
+            ConnectionString.openConnectionAccess()
                 sql = "Select tipoMovimento.operacao,movimento.data,MovimentoProduto.qtd,MovimentoProduto.Preco From ((MovimentoProduto " & _
                    "inner join movimento on movimento.codigo = movimentoProduto.movimento ) " & _
                     "inner join tipoMovimento on tipoMovimento.nome = movimento.tipoMovimento) " & _
                      "Where (MovimentoProduto.produto =" & codigoProduto & ") AND (Movimento.data BETWEEN #" & dataInicio.Month & "/" & dataInicio.Day & "/" & _
                         "" & dataInicio.Year & "# AND #" & dataTermino.Month & "/" & dataTermino.Day & "/" & dataTermino.Year & "# )"
-                command = New OleDbCommand(sql, conexao)
-                dataReader = command.ExecuteReader()
-                Do While dataReader.Read = True
-                    If (dataReader(0) = "Saida") Then
-                        precoUnitarioSaidas = dataReader(3) / dataReader(2)
+            command = New OleDbCommand(sql, conexaoAccess)
+            dataReader = command.ExecuteReader()
+            Do While dataReader.Read = True
+                If (dataReader(0) = "Saida") Then
+                    precoUnitarioSaidas = dataReader(3) / dataReader(2)
                     data = dataReader(1)
                     If (data.Month = 1) Then
                         valorJaneiro = valorJaneiro + (precoUnitarioSaidas * dataReader(2) - (precoUnitarioEntrada * dataReader(2)))
@@ -97,11 +97,11 @@ Public Class FrmGraficoProduto
                     precoUnitarioEntrada = dataReader(3) / dataReader(2)
 
                 End If
-                Loop
-            Catch ex As Exception
-                MessageBox.Show(ex.Message)
-            End Try
-        ConnectionString.conexao.Close()
+            Loop
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        ConnectionString.conexaoAccess.Close()
         Dim count As Integer = dataInicio.Month
 
         For i As Integer = dataInicio.Month To dataTermino.Month Step 1

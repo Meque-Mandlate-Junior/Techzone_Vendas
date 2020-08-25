@@ -8,11 +8,11 @@ Public Class ProdutoDAO
     End Sub
 
     Public Overloads Function carregarDados() As ArrayList
-        ConnectionString.Connection()
         sql = "SELECT * FROM produto"
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            ConnectionString.openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim prod As New Produto
@@ -22,21 +22,22 @@ Public Class ProdutoDAO
                 lista.Add(prod)
             Loop
             If (dataReader.Read = False) Then
-                ConnectionString.conexao.Close()
+                ConnectionString.conexaoAccess.Close()
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-            ConnectionString.conexao.Close()
+            ConnectionString.conexaoAccess.Close()
         End Try
         Return lista
 
     End Function
 
     Public Overloads Sub carregarDados(dgvProduto As DataGridView)
-        Connection()
+        ConnectionString.openConnectionMysql()
         sql = "SELECT * FROM produto"
         Try
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgvProduto.Rows.Clear()
             Do While dataReader.Read = True
@@ -45,15 +46,15 @@ Public Class ProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
 
     Public Sub insert(ByVal prod As Produto)
         Try
             sql = "INSERT INTO produto(codigo,nome,precoVenda) VALUES(?,?,?)"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
             command.Parameters.AddWithValue("nome", prod.nomeProduto)
             command.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
@@ -62,23 +63,23 @@ Public Class ProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub update(ByVal prod As Produto, ByVal cod As Long)
         Try
             If cod = prod.codigoProduto Then
                 sql = "UPDATE produto SET nome=?,precoVenda=? WHERE codigo=?"
-                Connection()
-                command = New OleDbCommand(sql, conexao)
+                openConnectionAccess()
+                command = New OleDbCommand(sql, conexaoAccess)
                 command.Parameters.AddWithValue("nome", prod.nomeProduto)
                 command.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
                 command.Parameters.AddWithValue("codigo", Convert.ToString(cod))
                 command.ExecuteNonQuery()
             Else
                 sql = "UPDATE produto SET codigo=?,nome=?,precoVenda=? WHERE codigo=?"
-                Connection()
-                command = New OleDbCommand(sql, conexao)
+                openConnectionAccess()
+                command = New OleDbCommand(sql, conexaoAccess)
                 command.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
                 command.Parameters.AddWithValue("nome", prod.nomeProduto)
                 command.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
@@ -89,29 +90,29 @@ Public Class ProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub delete(ByVal prod As Produto)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "DELETE FROM produto WHERE codigo =?"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
             command.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Function search_cod(ByVal cod As String) As Produto
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM Produto WHERE codigo =?"
         Dim prod As New Produto
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", cod)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
@@ -123,14 +124,14 @@ Public Class ProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return prod
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Function search_Like(ByRef sql As String) As ArrayList
-        Connection()
+        openConnectionAccess()
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim prod As New Produto
@@ -143,6 +144,6 @@ Public Class ProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 End Class

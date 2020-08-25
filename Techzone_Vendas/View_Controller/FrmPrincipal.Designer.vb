@@ -62,6 +62,7 @@ Partial Class FrmPrincipal
         Me.txtProcuraProd = New System.Windows.Forms.TextBox()
         Me.rbCodigo = New System.Windows.Forms.RadioButton()
         Me.btnProcessarSaida = New System.Windows.Forms.Button()
+        Me.btnConfiguraçãoBD = New System.Windows.Forms.Button()
         Me.Guna2GroupBox1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -95,6 +96,7 @@ Partial Class FrmPrincipal
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2GroupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Guna2GroupBox1.BorderThickness = 2
+        Me.Guna2GroupBox1.Controls.Add(Me.btnConfiguraçãoBD)
         Me.Guna2GroupBox1.Controls.Add(Me.btnRelaMovimentos)
         Me.Guna2GroupBox1.Controls.Add(Me.btnRegistoMov)
         Me.Guna2GroupBox1.Controls.Add(Me.btnTipoMovimento)
@@ -555,6 +557,23 @@ Partial Class FrmPrincipal
         Me.btnProcessarSaida.Text = "Processar Saida"
         Me.btnProcessarSaida.UseVisualStyleBackColor = False
         '
+        'btnConfiguraçãoBD
+        '
+        Me.btnConfiguraçãoBD.BackColor = System.Drawing.SystemColors.Control
+        Me.btnConfiguraçãoBD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer))
+        Me.btnConfiguraçãoBD.FlatAppearance.BorderSize = 2
+        Me.btnConfiguraçãoBD.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.btnConfiguraçãoBD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
+        Me.btnConfiguraçãoBD.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnConfiguraçãoBD.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnConfiguraçãoBD.ForeColor = System.Drawing.Color.Black
+        Me.btnConfiguraçãoBD.Location = New System.Drawing.Point(15, 393)
+        Me.btnConfiguraçãoBD.Name = "btnConfiguraçãoBD"
+        Me.btnConfiguraçãoBD.Size = New System.Drawing.Size(163, 42)
+        Me.btnConfiguraçãoBD.TabIndex = 7
+        Me.btnConfiguraçãoBD.Text = "Configuração de BD"
+        Me.btnConfiguraçãoBD.UseVisualStyleBackColor = False
+        '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -620,4 +639,5 @@ Partial Class FrmPrincipal
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents btnConfiguraçãoBD As System.Windows.Forms.Button
 End Class

@@ -8,11 +8,11 @@ Public Class MovimentoProdutoDAO
     End Sub
 
     Public Overloads Function carregarDados() As ArrayList
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM MovimentoProduto"
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim mvP As New MovimentoProduto
@@ -26,15 +26,15 @@ Public Class MovimentoProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
         Return lista
     End Function
 
     Public Overloads Sub carregarDados(dgv As DataGridView)
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM MovimentoProduto"
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgv.Rows.Clear()
             Do While dataReader.Read = True
@@ -43,16 +43,16 @@ Public Class MovimentoProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
- 
+
 
 
     Public Sub insert(ByVal mvP As MovimentoProduto)
         Try
             sql = "INSERT INTO MovimentoProduto(movimento,produto,qtd,preco) VALUES(?,?,?,?)"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("movimento", Convert.ToString(mvP.movimentoP))
             command.Parameters.AddWithValue("produto", Convert.ToString(mvP.produtoP))
             command.Parameters.AddWithValue("qtd", Convert.ToString(mvP.qtdP))
@@ -61,14 +61,14 @@ Public Class MovimentoProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub update(ByVal mvP As MovimentoProduto, ByVal cod As Long)
         Try
             sql = "UPDATE MovimentoProduto SET movimento=?,produto=?,qtd=?,preco=? WHERE codigo=?"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("movimento", Convert.ToString(mvP.movimentoP))
             command.Parameters.AddWithValue("produto", Convert.ToString(mvP.produtoP))
             command.Parameters.AddWithValue("qtd", Convert.ToString(mvP.qtdP))
@@ -78,29 +78,29 @@ Public Class MovimentoProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub delete(ByVal mvP As MovimentoProduto)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "DELETE FROM MovimentoProduto WHERE codigo =?"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(mvP.codigoP))
             command.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Function search_cod(ByVal cod As String) As MovimentoProduto
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM MovimentoProduto WHERE codigo =?"
         Dim mvP As New MovimentoProduto
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", cod)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
@@ -114,14 +114,14 @@ Public Class MovimentoProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return mvP
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Function search_Like(ByRef sql As String) As ArrayList
-        Connection()
+        openConnectionAccess()
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim mvP As New MovimentoProduto
@@ -136,13 +136,13 @@ Public Class MovimentoProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Sub join(ByVal sql As String, ByRef dgv As DataGridView)
-        Connection()
+        openConnectionAccess()
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgv.Rows.Clear()
             Do While dataReader.Read = True
@@ -151,6 +151,6 @@ Public Class MovimentoProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 End Class

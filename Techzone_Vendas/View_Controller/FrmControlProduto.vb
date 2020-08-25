@@ -53,13 +53,13 @@ Public Class FrmControlProduto
             Dim precoUnitarioEntrada As Double = 0
             Dim precoUnitarioSaidas As Double = 0
             Try
-                ConnectionString.Connection()
+                ConnectionString.openConnectionAccess()
                 sql = "Select tipoMovimento.operacao , MovimentoProduto.qtd,MovimentoProduto.preco From ((MovimentoProduto " & _
                    "inner join movimento  on movimento.codigo = movimentoProduto.movimento ) " & _
                     "inner join tipoMovimento on tipoMovimento.nome =movimento.tipoMovimento) " & _
                     "Where (MovimentoProduto.produto =" & prod.codigoProduto & ") AND (Movimento.data BETWEEN #" & dpDataInicio.Value.Month & "/" & dpDataInicio.Value.Day & "/" & _
                     "" & dpDataInicio.Value.Year & "# AND #" & dpDataTermino.Value.Month & "/" & dpDataTermino.Value.Day & "/" & dpDataTermino.Value.Year & "# )"
-                command = New OleDbCommand(sql, conexao)
+                command = New OleDbCommand(sql, conexaoAccess)
                 dataReader = command.ExecuteReader()
                 Do While dataReader.Read = True
                     If (dataReader(0) = "Entrada") Then
@@ -75,7 +75,7 @@ Public Class FrmControlProduto
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
-            ConnectionString.conexao.Close()
+            ConnectionString.conexaoAccess.Close()
             dgvProdutos_lc.Rows.Add(prod.codigoProduto, prod.nomeProduto, lucroProduto)
         Next
     End Sub
@@ -122,13 +122,13 @@ Public Class FrmControlProduto
         dgvLucroProduto.Rows.Clear()
         Try
 
-            ConnectionString.Connection()
+            ConnectionString.openConnectionAccess()
             sql = "Select tipoMovimento.operacao,movimento.data,MovimentoProduto.qtd,MovimentoProduto.Preco From ((MovimentoProduto " & _
                "inner join movimento on movimento.codigo = movimentoProduto.movimento ) " & _
                 "inner join tipoMovimento on tipoMovimento.nome = movimento.tipoMovimento) " & _
                  "Where (MovimentoProduto.produto =" & codigoProduto & ") AND (Movimento.data BETWEEN #" & dpDataInicio.Value.Month & "/" & dpDataInicio.Value.Day & "/" & _
                     "" & dpDataInicio.Value.Year & "# AND #" & dpDataTermino.Value.Month & "/" & dpDataTermino.Value.Day & "/" & dpDataTermino.Value.Year & "# )"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 If (dataReader(0) = "Saida") Then
@@ -155,7 +155,7 @@ Public Class FrmControlProduto
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        ConnectionString.conexao.Close()
+        ConnectionString.conexaoAccess.Close()
     End Sub
 
     Private Sub FrmControlProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load

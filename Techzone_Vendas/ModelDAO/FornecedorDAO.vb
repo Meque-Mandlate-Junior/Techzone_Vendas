@@ -8,11 +8,11 @@ Public Class FornecedorDAO
     End Sub
 
     Public Overloads Function carregarDados() As ArrayList
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM fornecedor"
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim forn As New Fornecedor
@@ -25,14 +25,14 @@ Public Class FornecedorDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Overloads Sub carregarDados(dgvFornecedor As DataGridView)
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM fornecedor"
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgvFornecedor.Rows.Clear()
             Do While dataReader.Read = True
@@ -41,15 +41,15 @@ Public Class FornecedorDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
 
     Public Sub insert(ByVal forn As Fornecedor)
         Try
             sql = "INSERT INTO fornecedor(codigo,nome,endereco) VALUES(?,?,?)"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(forn.codigoFornecedor))
             command.Parameters.AddWithValue("nome", forn.nomeFornecedor)
             command.Parameters.AddWithValue("endereco", forn.enderecoFornecedor)
@@ -58,14 +58,14 @@ Public Class FornecedorDAO
         Catch ex As Exception
             MessageBox.Show("ERRO AO CADASTRAR " + ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub update(ByVal forn As Fornecedor, ByVal cod As Long)
         Try
             sql = "UPDATE fornecedor SET codigo=?,nome=?,endereco=? WHERE codigo=?"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(forn.codigoFornecedor))
             command.Parameters.AddWithValue("nome", forn.nomeFornecedor)
             command.Parameters.AddWithValue("endereco", forn.enderecoFornecedor)
@@ -75,29 +75,29 @@ Public Class FornecedorDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub delete(ByVal forn As Fornecedor)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "DELETE FROM fornecedor WHERE codigo=?"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(forn.codigoFornecedor))
             command.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Function search_cod(ByVal cod As String) As Fornecedor
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM fornecedor WHERE codigo =?"
         Dim forn As New Fornecedor
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", cod)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
@@ -109,6 +109,6 @@ Public Class FornecedorDAO
             MessageBox.Show(ex.Message)
         End Try
         Return forn
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 End Class

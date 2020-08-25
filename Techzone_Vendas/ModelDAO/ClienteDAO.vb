@@ -8,11 +8,11 @@ Public Class ClienteDAO
     End Sub
 
     Public Overloads Function carregarDados() As ArrayList
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM cliente"
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim cl As New Cliente
@@ -25,14 +25,14 @@ Public Class ClienteDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Overloads Sub carregarDados(dgvCliente As DataGridView)
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM cliente"
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgvCliente.Rows.Clear()
             Do While dataReader.Read = True
@@ -41,15 +41,15 @@ Public Class ClienteDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
 
     Public Sub insert(ByVal cliente As Cliente)
         Try
             sql = "INSERT INTO cliente(nome,nuit,morada) VALUES(?,?,?)"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", cliente.NomeCliente)
             command.Parameters.AddWithValue("nuit", Convert.ToString(cliente.NuitCliente))
             command.Parameters.AddWithValue("morada", cliente.MoradaCliente)
@@ -58,14 +58,14 @@ Public Class ClienteDAO
         Catch ex As Exception
             MessageBox.Show("ERRO AO CADASTRAR " + ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub update(ByVal cliente As Cliente, ByVal nuit As Long)
         Try
             sql = "UPDATE cliente SET nome=?,nuit=?,morada=? WHERE nuit=?"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", cliente.NomeCliente)
             command.Parameters.AddWithValue("nuit", Convert.ToString(cliente.NuitCliente))
             command.Parameters.AddWithValue("morada", cliente.MoradaCliente)
@@ -75,29 +75,29 @@ Public Class ClienteDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub delete(ByVal cliente As Cliente)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "DELETE FROM cliente WHERE nuit=?"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(cliente.NuitCliente))
             command.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Function search_nuit(ByVal nuit As String) As Cliente
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM cliente WHERE nuit =?"
         Dim cl As New Cliente
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nuit", nuit)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
@@ -109,7 +109,7 @@ Public Class ClienteDAO
             MessageBox.Show(ex.Message)
         End Try
         Return cl
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
 End Class

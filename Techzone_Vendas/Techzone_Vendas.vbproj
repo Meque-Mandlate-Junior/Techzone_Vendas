@@ -55,6 +55,7 @@
       <HintPath>..\..\Vendas\Vendas\bin\Debug\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -88,6 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View_Controller\frmConfiguracaoesBD.Designer.vb">
+      <DependentUpon>frmConfiguracaoesBD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View_Controller\frmConfiguracaoesBD.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="View_Controller\FrmFiltroRelatorio.Designer.vb">
       <DependentUpon>FrmFiltroRelatorio.vb</DependentUpon>
@@ -238,6 +245,9 @@
     <EmbeddedResource Include="View_Controller\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View_Controller\frmConfiguracaoesBD.resx">
+      <DependentUpon>frmConfiguracaoesBD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View_Controller\FrmFiltroRelatorio.resx">
       <DependentUpon>FrmFiltroRelatorio.vb</DependentUpon>

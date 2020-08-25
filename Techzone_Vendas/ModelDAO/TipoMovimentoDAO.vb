@@ -8,11 +8,11 @@ Public Class TipoMovimentoDAO
     End Sub
 
     Public Overloads Function carregarDados() As ArrayList
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM tipoMovimento"
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim mov As New TipoMovimento
@@ -24,14 +24,14 @@ Public Class TipoMovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Overloads Sub carregarDados(dgvTpMov As DataGridView)
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM tipoMovimento"
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             dgvTpMov.Rows.Clear()
             Do While dataReader.Read = True
@@ -40,15 +40,15 @@ Public Class TipoMovimentoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
 
     Public Sub insert(ByVal mov As TipoMovimento)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "INSERT INTO tipoMovimento(nome,operacao) VALUES(?,?)"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", mov.nomeTM)
             command.Parameters.AddWithValue("operacao", mov.operacaoTM)
             command.ExecuteNonQuery()
@@ -56,14 +56,14 @@ Public Class TipoMovimentoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub update(ByVal mov As TipoMovimento, ByVal nome As Long)
         Try
             sql = "UPDATE tipoMovimento SET nome=?,operacao=? WHERE nome=?"
-            Connection()
-            command = New OleDbCommand(sql, conexao)
+            openConnectionAccess()
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", mov.nomeTM)
             command.Parameters.AddWithValue("operacao", mov.operacaoTM)
             command.Parameters.AddWithValue("nome", nome)
@@ -72,29 +72,29 @@ Public Class TipoMovimentoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Sub delete(ByVal mov As TipoMovimento)
         Try
-            Connection()
+            openConnectionAccess()
             sql = "DELETE FROM tipoMovimento WHERE nome=?"
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", mov.nomeTM)
             command.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexao.Close()
+        conexaoAccess.Close()
     End Sub
 
     Public Function search_nome(ByVal nome As String) As TipoMovimento
-        Connection()
+        openConnectionAccess()
         sql = "SELECT * FROM tipoMovimento WHERE nome =?"
         Dim mov As New TipoMovimento
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", nome)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
@@ -105,14 +105,14 @@ Public Class TipoMovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return mov
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 
     Public Function search_Like(ByRef sql As String) As ArrayList
-        Connection()
+        openConnectionAccess()
         Dim lista As New ArrayList
         Try
-            command = New OleDbCommand(sql, conexao)
+            command = New OleDbCommand(sql, conexaoAccess)
             dataReader = command.ExecuteReader()
             Do While dataReader.Read = True
                 Dim mov As New TipoMovimento
@@ -124,7 +124,7 @@ Public Class TipoMovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         Return lista
-        conexao.Close()
+        conexaoAccess.Close()
     End Function
 End Class
 

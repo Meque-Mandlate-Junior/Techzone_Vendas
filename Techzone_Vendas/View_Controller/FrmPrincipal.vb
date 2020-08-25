@@ -197,4 +197,8 @@
         txtCodigoProduto.Text = dgvProdutos.CurrentRow.Cells(0).Value.ToString
         txtNomeProduto.Text = dgvProdutos.CurrentRow.Cells(1).Value.ToString
     End Sub
+
+    Private Sub btnConfiguraçãoBD_Click(sender As Object, e As EventArgs) Handles btnConfiguraçãoBD.Click
+        frmConfiguracaoesBD.Show()
+    End Sub
 End Class

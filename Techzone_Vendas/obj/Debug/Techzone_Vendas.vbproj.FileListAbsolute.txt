@@ -52,6 +52,7 @@ C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.vbproj.GenerateResource.Cache
 C:\Users\User\Desktop\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.frmConfiguracaoesBD.resources
 =======
+>>>>>>> e713a77d6c504f5fe19eba0fab8911ec73e3e91e
 C:\Techzone_Vendas\Techzone_Vendas\bin\Debug\Techzone_Vendas.exe.config
 C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.exe
 C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.xml
@@ -77,4 +78,3 @@ C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Grafico.resources
 C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.LoginForm1.resources
 C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.Resources.resources
 C:\Techzone_Vendas\Techzone_Vendas\obj\Debug\Techzone_Vendas.vbproj.GenerateResource.Cache
->>>>>>> e713a77d6c504f5fe19eba0fab8911ec73e3e91e

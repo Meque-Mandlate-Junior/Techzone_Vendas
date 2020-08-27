@@ -24,6 +24,8 @@
         prod.codigoProduto = Convert.ToInt64((txtCodigo.Text).Trim)
         prod.precoVendaProduto = Convert.ToInt64((txtPreco.Text))
         Dim DAO As New ProdutoDAO
+        Dim DAOMySql As New ProdutoDAO
+        DAOMySql.insertMysql(prod)
         DAO.insert(prod)
         DAO.carregarDados(dgvProdutos)
         txtNome.Text = ""
@@ -55,7 +57,7 @@
         If String.IsNullOrEmpty(prod.nomeProduto) Then
             MessageBox.Show("Falha Registo com o Nuit _" + value + " _não Encontrado!")
         Else
-            DAO.delete(prod)
+            DAO.deleteAccess(prod)
         End If
         DAO.carregarDados(dgvProdutos) '
     End Sub

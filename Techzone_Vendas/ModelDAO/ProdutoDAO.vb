@@ -1,8 +1,12 @@
 ﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
 Public Class ProdutoDAO
     Private command As OleDbCommand
     Private sql As String
     Private dataReader As OleDbDataReader
+    Private commandMysql As MySqlCommand
+    Private sql_Mysql As String
+    Private dataReaderMysql As MySqlDataReader
     Public Sub New()
 
     End Sub
@@ -27,6 +31,29 @@ Public Class ProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             ConnectionString.conexaoAccess.Close()
+        End Try
+        Return lista
+    End Function
+    Public Overloads Function carregarDadosMysqk() As ArrayList
+        sql = "SELECT * FROM produto"
+        Dim lista As New ArrayList
+        Try
+            ConnectionString.openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            dataReaderMysql = commandMysql.ExecuteReader()
+            Do While dataReaderMysql.Read = True
+                Dim prod As New Produto
+                prod.codigoProduto = dataReaderMysql(0)
+                prod.nomeProduto = dataReaderMysql(1)
+                prod.precoVendaProduto = dataReaderMysql(2)
+                lista.Add(prod)
+            Loop
+            If (dataReader.Read = False) Then
+                ConnectionString.conexaoMysql.Close()
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            ConnectionString.conexaoMysql.Close()
         End Try
         Return lista
 
@@ -66,6 +93,22 @@ Public Class ProdutoDAO
         conexaoAccess.Close()
     End Sub
 
+    Public Sub insertMysql(ByVal prod As Produto)
+        Try
+            sql = "INSERT INTO produto(codigo,nome,precoVenda) VALUES(?,?,?)"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
+            commandMysql.Parameters.AddWithValue("nome", prod.nomeProduto)
+            commandMysql.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("INSERIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub update(ByVal prod As Produto, ByVal cod As Long)
         Try
             If cod = prod.codigoProduto Then
@@ -93,13 +136,55 @@ Public Class ProdutoDAO
         conexaoAccess.Close()
     End Sub
 
-    Public Sub delete(ByVal prod As Produto)
+    Public Sub updateMySql(ByVal prod As Produto, ByVal cod As Long)
+        Try
+            If cod = prod.codigoProduto Then
+                sql = "UPDATE produto SET nome=?,precoVenda=? WHERE codigo=?"
+                openConnectionMysql()
+                commandMysql = New MySqlCommand(sql, conexaoMysql)
+                commandMysql.Parameters.AddWithValue("nome", prod.nomeProduto)
+                commandMysql.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
+                commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(cod))
+                commandMysql.ExecuteNonQuery()
+            Else
+                sql = "UPDATE produto SET codigo=?,nome=?,precoVenda=? WHERE codigo=?"
+                openConnectionMysql()
+                commandMysql = New MySqlCommand(sql, conexaoMysql)
+                commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
+                commandMysql.Parameters.AddWithValue("nome", prod.nomeProduto)
+                commandMysql.Parameters.AddWithValue("precoVenda", Convert.ToString(prod.precoVendaProduto))
+                commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(cod))
+                commandMysql.ExecuteNonQuery()
+            End If
+            MessageBox.Show("ACTUALIZADO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
+    Public Sub deleteAccess(ByVal prod As Produto)
         Try
             openConnectionAccess()
             sql = "DELETE FROM produto WHERE codigo =?"
             command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
             command.ExecuteNonQuery()
+            MessageBox.Show("REMOVIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoAccess.Close()
+    End Sub
+
+
+    Public Sub deleteMysql(ByVal prod As Produto)
+        Try
+            openConnectionMysql()
+            sql = "DELETE FROM produto WHERE codigo =?"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(prod.codigoProduto))
+            commandMysql.ExecuteNonQuery()
             MessageBox.Show("REMOVIDO COM SUCESSO")
         Catch ex As Exception
             MessageBox.Show(ex.Message)

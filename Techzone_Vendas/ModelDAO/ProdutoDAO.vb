@@ -25,16 +25,13 @@ Public Class ProdutoDAO
                 prod.precoVendaProduto = dataReader(2)
                 lista.Add(prod)
             Loop
-            If (dataReader.Read = False) Then
-                ConnectionString.conexaoAccess.Close()
-            End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             ConnectionString.conexaoAccess.Close()
         End Try
         Return lista
     End Function
-    Public Overloads Function carregarDadosMysqk() As ArrayList
+    Public Overloads Function carregarDadosMysql() As ArrayList
         sql = "SELECT * FROM produto"
         Dim lista As New ArrayList
         Try
@@ -48,19 +45,16 @@ Public Class ProdutoDAO
                 prod.precoVendaProduto = dataReaderMysql(2)
                 lista.Add(prod)
             Loop
-            If (dataReader.Read = False) Then
-                ConnectionString.conexaoMysql.Close()
-            End If
+          
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-            ConnectionString.conexaoMysql.Close()
         End Try
+            ConnectionString.conexaoMysql.Close()
         Return lista
 
     End Function
 
     Public Overloads Sub carregarDados(dgvProduto As DataGridView)
-        ConnectionString.openConnectionMysql()
         sql = "SELECT * FROM produto"
         Try
             openConnectionAccess()
@@ -136,7 +130,7 @@ Public Class ProdutoDAO
         conexaoAccess.Close()
     End Sub
 
-    Public Sub updateMySql(ByVal prod As Produto, ByVal cod As Long)
+    Public Sub updateMysql(ByVal prod As Produto, ByVal cod As Long)
         Try
             If cod = prod.codigoProduto Then
                 sql = "UPDATE produto SET nome=?,precoVenda=? WHERE codigo=?"
@@ -162,6 +156,8 @@ Public Class ProdutoDAO
         End Try
         conexaoMysql.Close()
     End Sub
+
+
 
     Public Sub deleteAccess(ByVal prod As Produto)
         Try
@@ -189,7 +185,7 @@ Public Class ProdutoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexaoAccess.Close()
+        conexaoMysql.Close()
     End Sub
 
     Public Function search_cod(ByVal cod As String) As Produto
@@ -211,6 +207,27 @@ Public Class ProdutoDAO
         Return prod
         conexaoAccess.Close()
     End Function
+
+    Public Function search_codMysql(ByVal cod As String) As Produto
+        openConnectionMysql()
+        sql = "SELECT * FROM Produto WHERE codigo =?"
+        Dim prod As New Produto
+        Try
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", cod)
+            dataReaderMysql = commandMysql.ExecuteReader()
+            Do While dataReaderMysql.Read = True
+                prod.codigoProduto = dataReaderMysql(0)
+                prod.nomeProduto = dataReaderMysql(1)
+                prod.precoVendaProduto = dataReaderMysql(2)
+            Loop
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+        Return prod
+    End Function
+
 
     Public Function search_Like(ByRef sql As String) As ArrayList
         openConnectionAccess()

@@ -1,8 +1,14 @@
 ﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
+
 Public Class ClienteDAO
     Private command As OleDbCommand
     Private sql As String
     Private dataReader As OleDbDataReader
+    Private commandMysql As MySqlCommand
+    Private sql_Mysql As String
+    Private dataReaderMysql As MySqlDataReader
+
     Public Sub New()
 
     End Sub
@@ -45,7 +51,7 @@ Public Class ClienteDAO
     End Sub
 
 
-    Public Sub insert(ByVal cliente As Cliente)
+    Public Sub insertAccess(ByVal cliente As Cliente)
         Try
             sql = "INSERT INTO cliente(nome,nuit,morada) VALUES(?,?,?)"
             openConnectionAccess()
@@ -61,7 +67,23 @@ Public Class ClienteDAO
         conexaoAccess.Close()
     End Sub
 
-    Public Sub update(ByVal cliente As Cliente, ByVal nuit As Long)
+    Public Sub insertMysql(ByVal cliente As Cliente)
+        Try
+            sql = "INSERT INTO cliente(nome,nuit,morada) VALUES(?,?,?)"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nome", cliente.NomeCliente)
+            commandMysql.Parameters.AddWithValue("nuit", Convert.ToString(cliente.NuitCliente))
+            commandMysql.Parameters.AddWithValue("morada", cliente.MoradaCliente)
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("INSERIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show("ERRO AO CADASTRAR " + ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
+    Public Sub updateAccess(ByVal cliente As Cliente, ByVal nuit As Long)
         Try
             sql = "UPDATE cliente SET nome=?,nuit=?,morada=? WHERE nuit=?"
             openConnectionAccess()
@@ -78,6 +100,23 @@ Public Class ClienteDAO
         conexaoAccess.Close()
     End Sub
 
+    Public Sub updateMysql(ByVal cliente As Cliente, ByVal nuit As Long)
+        Try
+            sql = "UPDATE cliente SET nome=?,nuit=?,morada=? WHERE nuit=?"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nome", cliente.NomeCliente)
+            commandMysql.Parameters.AddWithValue("nuit", Convert.ToString(cliente.NuitCliente))
+            commandMysql.Parameters.AddWithValue("morada", cliente.MoradaCliente)
+            commandMysql.Parameters.AddWithValue("nuit", Convert.ToString(nuit))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("ACTUALIZADO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub delete(ByVal cliente As Cliente)
         Try
             openConnectionAccess()
@@ -90,6 +129,20 @@ Public Class ClienteDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+    End Sub
+
+    Public Sub deleteMysql(ByVal cliente As Cliente)
+        Try
+            openConnectionMysql()
+            sql = "DELETE FROM cliente WHERE nuit=?"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(cliente.NuitCliente))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("REMOVIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
     Public Function search_nuit(ByVal nuit As String) As Cliente

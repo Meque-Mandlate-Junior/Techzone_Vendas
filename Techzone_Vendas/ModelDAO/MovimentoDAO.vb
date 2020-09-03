@@ -1,8 +1,11 @@
 ﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
 Public Class MovimentoDAO
     Private command As OleDbCommand
     Private sql As String
     Private dataReader As OleDbDataReader
+    Private commandMysql As MysqlCommand
+    Private dataReaderMysql As MySqlDataReader
     Public Sub New()
 
     End Sub
@@ -27,6 +30,29 @@ Public Class MovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+        Return lista
+    End Function
+
+    Public Overloads Function carregarDadosMysql() As ArrayList
+        openConnectionAccess()
+        sql = "SELECT * FROM Movimento"
+        Dim lista As New ArrayList
+        Try
+            commandMysql = New MysqlCommand(sql, conexaoMysql)
+            dataReaderMysql = commandMysql.ExecuteReader()
+            Do While dataReader.Read = True
+                Dim mvs As New Movimento
+                mvs.codigoMS = dataReader(0)
+                mvs.clienteMS = dataReader(1)
+                mvs.fornecedorMS = dataReader(2)
+                mvs.dateMS = dataReader(3)
+                mvs.tipoMovMS = dataReader(4)
+                lista.Add(mvs)
+            Loop
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
         Return lista
     End Function
 

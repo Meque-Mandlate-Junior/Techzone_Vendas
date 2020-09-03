@@ -30,7 +30,7 @@ Public Class FrmCliente
         cliente.NuitCliente = Convert.ToInt64((txtNuit.Text).Trim)
         Cliente.MoradaCliente = txtMorada.Text
         Dim DAO As New ClienteDAO
-        DAO.insert(cliente)
+        DAO.insertAccess(cliente)
         DAO.carregarDados(dgvClientes)
     End Sub
 

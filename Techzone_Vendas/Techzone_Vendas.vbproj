@@ -84,6 +84,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reposity\ReposityCliente.vb" />
+    <Compile Include="Reposity\ReposityProduto.vb" />
     <Compile Include="View_Controller\CrystalReport1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -341,7 +343,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="imagem\" />
-    <Folder Include="Reposity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

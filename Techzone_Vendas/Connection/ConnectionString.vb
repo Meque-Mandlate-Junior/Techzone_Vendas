@@ -3,10 +3,9 @@ Imports MySql.Data.MySqlClient
 
 Module ConnectionString
     Public conexaoAccess As OleDbConnection
-    Public conexaoMysql As New MySqlConnection("server=localhost;userid=root ;password=;database= BDVendas")
+    Public conexaoMysql As New MySqlConnection("server=localhost;userid=root ;password=;database=movedb")
     Public connectionString As String = System.Environment.CurrentDirectory.ToString & "\VendasDB.accdb"
-    Public connectioStringMysql As String = "server=localhost;userid=root ;password=;database= BDVendas"
-
+   
     Public Sub openConnectionAccess()
         Try
                 conexaoAccess = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" & connectionString & "")
@@ -17,7 +16,6 @@ Module ConnectionString
     End Sub
     Public Sub openConnectionMysql()
         Try
-            conexaoMysql.Close()
             conexaoMysql.Open()
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
@@ -30,7 +28,7 @@ Module ConnectionString
                 conexaoMysql.Close()
             End If
         Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
+            'MessageBox.Show(ex.Message)
         End Try
     End Sub
 

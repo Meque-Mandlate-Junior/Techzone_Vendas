@@ -82,7 +82,7 @@
     Private Sub btnProcurarProduto_Click(sender As Object, e As EventArgs) Handles btnProcurarProduto.Click
         Dim DAO As New ClienteDAO
         Dim cl As New Cliente
-        cl = DAO.search_nuit(txtNuitCliente.Text)
+        cl = DAO.search_nuitAccess(txtNuitCliente.Text)
         If String.IsNullOrEmpty(cl.NomeCliente) Then
             txtNuitCliente.Text = ""
             txtNomeCliente.Text = ""

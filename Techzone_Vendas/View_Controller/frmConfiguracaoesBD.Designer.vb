@@ -102,7 +102,7 @@ Partial Class frmConfiguracaoesBD
         Me.MaximumSize = New System.Drawing.Size(413, 184)
         Me.MinimizeBox = False
         Me.Name = "frmConfiguracaoesBD"
-        Me.Text = "frmConfiguracaoes"
+        Me.Text = "Configuraçãoes de Banco de Dados"
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

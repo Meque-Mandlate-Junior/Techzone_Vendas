@@ -74,6 +74,18 @@ Namespace My
                 Return CType(Me("VendasDBConnectionString1"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")> _
+        Public Property IndexTipoBanco() As Integer
+            Get
+                Return CType(Me("IndexTipoBanco"), Integer)
+            End Get
+            Set(value As Integer)
+                Me("IndexTipoBanco") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

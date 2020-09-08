@@ -1,8 +1,13 @@
 ﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
+
 Public Class MovimentoProdutoDAO
     Private command As OleDbCommand
     Private sql As String
     Private dataReader As OleDbDataReader
+    Private commandMysql As MySqlCommand
+    Private dataReaderMysql As MySqlDataReader
+
     Public Sub New()
 
     End Sub
@@ -46,8 +51,6 @@ Public Class MovimentoProdutoDAO
         conexaoAccess.Close()
     End Sub
 
-
-
     Public Sub insert(ByVal mvP As MovimentoProduto)
         Try
             sql = "INSERT INTO MovimentoProduto(movimento,produto,qtd,preco) VALUES(?,?,?,?)"
@@ -62,6 +65,22 @@ Public Class MovimentoProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+    End Sub
+
+    Public Sub insertMysql(ByVal mvP As MovimentoProduto)
+        Try
+            sql = "INSERT INTO MovimentoProduto(movimento,produto,qtd,preco) VALUES(?,?,?,?)"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("movimento", Convert.ToString(mvP.movimentoP))
+            commandMysql.Parameters.AddWithValue("produto", Convert.ToString(mvP.produtoP))
+            commandMysql.Parameters.AddWithValue("qtd", Convert.ToString(mvP.qtdP))
+            commandMysql.Parameters.AddWithValue("preco", Convert.ToString(mvP.precoP))
+            commandMysql.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
     Public Sub update(ByVal mvP As MovimentoProduto, ByVal cod As Long)
@@ -81,6 +100,23 @@ Public Class MovimentoProdutoDAO
         conexaoAccess.Close()
     End Sub
 
+    Public Sub updateMysql(ByVal mvP As MovimentoProduto, ByVal cod As Long)
+        Try
+            sql = "UPDATE MovimentoProduto SET movimento=?,produto=?,qtd=?,preco=? WHERE codigo=?"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("movimento", Convert.ToString(mvP.movimentoP))
+            commandMysql.Parameters.AddWithValue("produto", Convert.ToString(mvP.produtoP))
+            commandMysql.Parameters.AddWithValue("qtd", Convert.ToString(mvP.qtdP))
+            commandMysql.Parameters.AddWithValue("preco", Convert.ToString(mvP.precoP))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("ACTUALIZADO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub delete(ByVal mvP As MovimentoProduto)
         Try
             openConnectionAccess()
@@ -93,6 +129,21 @@ Public Class MovimentoProdutoDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+    End Sub
+
+
+    Public Sub deleteMysql(ByVal mvP As MovimentoProduto)
+        Try
+            openConnectionMysql()
+            sql = "DELETE FROM MovimentoProduto WHERE codigo =?"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(mvP.codigoP))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("REMOVIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
     Public Function search_cod(ByVal cod As String) As MovimentoProduto

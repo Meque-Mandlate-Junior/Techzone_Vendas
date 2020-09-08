@@ -105,6 +105,24 @@ Public Class MovimentoDAO
         conexaoAccess.Close()
     End Sub
 
+
+    Public Sub insertMysql(ByVal mvs As Movimento)
+        Try
+            sql = "INSERT INTO Movimento (codigo,cliente,fornecedor,data,tipoMovimento) VALUES(?,?,?,?,?)"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(mvs.codigoMS))
+            commandMysql.Parameters.AddWithValue("cliente", Convert.ToString(mvs.clienteMS))
+            commandMysql.Parameters.AddWithValue("fornecedor", Convert.ToString(mvs.fornecedorMS))
+            commandMysql.Parameters.AddWithValue("data", Convert.ToString(mvs.dateMS))
+            commandMysql.Parameters.AddWithValue("tipoMovimento", mvs.tipoMovMS)
+            commandMysql.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub update(ByVal mvs As Movimento, ByVal cod As Long)
         Try
             sql = "UPDATE Movimento SET cliente=?, fornecedor=?,data=?,TipoMovimento=? WHERE codigo=?"
@@ -123,6 +141,24 @@ Public Class MovimentoDAO
         conexaoAccess.Close()
     End Sub
 
+    Public Sub updateMysql(ByVal mvs As Movimento, ByVal cod As Long)
+        Try
+            sql = "UPDATE Movimento SET cliente=?, fornecedor=?,data=?,TipoMovimento=? WHERE codigo=?"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("cliente", Convert.ToString(mvs.clienteMS))
+            commandMysql.Parameters.AddWithValue("fornecedor", Convert.ToString(mvs.fornecedorMS))
+            commandMysql.Parameters.AddWithValue("data", Convert.ToString(mvs.dateMS))
+            commandMysql.Parameters.AddWithValue("tipoMovimento", mvs.tipoMovMS)
+            commandMysql.Parameters.AddWithValue("data", Convert.ToString(cod))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("ACTUALIZADO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub delete(ByVal mvs As Movimento)
         Try
             openConnectionAccess()
@@ -135,6 +171,20 @@ Public Class MovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+    End Sub
+
+    Public Sub deleteMysql(ByVal mvs As Movimento)
+        Try
+            openConnectionMysql()
+            sql = "DELETE FROM Movimento WHERE codigo =?"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("codigo", Convert.ToString(mvs.codigoMS))
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("REMOVIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
 

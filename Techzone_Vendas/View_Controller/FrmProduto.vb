@@ -8,8 +8,7 @@
         txtPreco.Text = prod.precoVendaProduto
     End Sub
 
-
-    Private Sub FrmProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub PreencheDGVProdutos()
         Dim rpProd As New ReposityProduto
         Dim lista As New ArrayList
         dgvProdutos.Rows.Clear()
@@ -17,6 +16,9 @@
         For Each produto As Produto In lista
             dgvProdutos.Rows.Add(produto.codigoProduto, produto.nomeProduto, produto.precoVendaProduto)
         Next
+    End Sub
+    Private Sub FrmProduto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PreencheDGVProdutos()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -30,12 +32,7 @@
         prod.precoVendaProduto = Convert.ToInt64((txtPreco.Text))
         Dim rpProd As New ReposityProduto
         rpProd.Insert(prod)
-        Dim lista As New ArrayList
-        lista = rpProd.returnDados()
-        dgvProdutos.Rows.Clear()
-        For Each produto As Produto In lista
-            dgvProdutos.Rows.Add(produto.codigoProduto, produto.nomeProduto, produto.precoVendaProduto)
-        Next
+        PreencheDGVProdutos()
         txtNome.Text = ""
         txtCodigo.Text = ""
         txtPreco.Text = ""
@@ -54,12 +51,7 @@
         Else
             rpProd.update(prod, Convert.ToInt64(item))
         End If
-        Dim lista As New ArrayList
-        dgvProdutos.Rows.Clear()
-        lista = rpProd.returnDados()
-        For Each produto As Produto In lista
-            dgvProdutos.Rows.Add(produto.codigoProduto, produto.nomeProduto, produto.precoVendaProduto)
-        Next
+        PreencheDGVProdutos()
     End Sub
 
     Private Sub btnRemover_Click(sender As Object, e As EventArgs) Handles btnRemover.Click
@@ -72,12 +64,7 @@
         Else
             rpProd.delete(prod)
         End If
-        Dim lista As New ArrayList
-        dgvProdutos.Rows.Clear()
-        lista = rpProd.returnDados()
-        For Each produto As Produto In lista
-            dgvProdutos.Rows.Add(produto.codigoProduto, produto.nomeProduto, produto.precoVendaProduto)
-        Next
+        PreencheDGVProdutos()
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click

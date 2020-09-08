@@ -3,7 +3,7 @@ Imports MySql.Data.MySqlClient
 
 Module ConnectionString
     Public conexaoAccess As OleDbConnection
-    Public conexaoMysql As New MySqlConnection("server=localhost;userid=root ;password=;database=movedb")
+    Public conexaoMysql As New MySqlConnection("server=localhost;userid=root ;password=;database=dbVendas")
     Public connectionString As String = System.Environment.CurrentDirectory.ToString & "\VendasDB.accdb"
    
     Public Sub openConnectionAccess()

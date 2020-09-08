@@ -86,7 +86,7 @@
     Private Sub btnProcurarProduto_Click(sender As Object, e As EventArgs) Handles btnProcurarProduto.Click
         Dim DAO As New FornecedorDAO
         Dim forn As New Fornecedor
-        forn = DAO.search_cod(txtCodigoFornecedor.Text)
+        forn = DAO.search_codAccess(txtCodigoFornecedor.Text)
         If String.IsNullOrEmpty(forn.nomeFornecedor) Then
             txtNomeFornecedor.Text = ""
             txtCodigoFornecedor.Text = ""

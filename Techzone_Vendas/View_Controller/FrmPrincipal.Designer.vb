@@ -24,6 +24,7 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Me.btnClientes = New System.Windows.Forms.Button()
         Me.Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
+        Me.btnConfiguraçãoBD = New System.Windows.Forms.Button()
         Me.btnRelaMovimentos = New System.Windows.Forms.Button()
         Me.btnRegistoMov = New System.Windows.Forms.Button()
         Me.btnTipoMovimento = New System.Windows.Forms.Button()
@@ -62,7 +63,28 @@ Partial Class FrmPrincipal
         Me.txtProcuraProd = New System.Windows.Forms.TextBox()
         Me.rbCodigo = New System.Windows.Forms.RadioButton()
         Me.btnProcessarSaida = New System.Windows.Forms.Button()
-        Me.btnConfiguraçãoBD = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.CadastrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProdutoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FornecedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProdutoToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CadastroDeProdutoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstatisticaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LucroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CadastroDeClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FornecedoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CadastroDeFornecedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContaCorrenteDeFornecedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PagamentoDoFornecedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContaCorrenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MovimentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MovimentoDeSaidaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MovimentoDeEntradaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RelatoriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConfiguraçõesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2GroupBox1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -71,6 +93,7 @@ Partial Class FrmPrincipal
         Me.Panel2.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnClientes
@@ -92,8 +115,7 @@ Partial Class FrmPrincipal
         '
         'Guna2GroupBox1
         '
-        Me.Guna2GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Guna2GroupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Guna2GroupBox1.BorderThickness = 2
         Me.Guna2GroupBox1.Controls.Add(Me.btnConfiguraçãoBD)
@@ -108,13 +130,30 @@ Partial Class FrmPrincipal
         Me.Guna2GroupBox1.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(15, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.Guna2GroupBox1.Location = New System.Drawing.Point(855, 12)
+        Me.Guna2GroupBox1.Location = New System.Drawing.Point(855, 47)
         Me.Guna2GroupBox1.Name = "Guna2GroupBox1"
         Me.Guna2GroupBox1.ShadowDecoration.Parent = Me.Guna2GroupBox1
-        Me.Guna2GroupBox1.Size = New System.Drawing.Size(207, 561)
+        Me.Guna2GroupBox1.Size = New System.Drawing.Size(207, 557)
         Me.Guna2GroupBox1.TabIndex = 1
         Me.Guna2GroupBox1.Text = "OPERAÇÕES"
         Me.Guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btnConfiguraçãoBD
+        '
+        Me.btnConfiguraçãoBD.BackColor = System.Drawing.SystemColors.Control
+        Me.btnConfiguraçãoBD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer))
+        Me.btnConfiguraçãoBD.FlatAppearance.BorderSize = 2
+        Me.btnConfiguraçãoBD.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.btnConfiguraçãoBD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
+        Me.btnConfiguraçãoBD.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btnConfiguraçãoBD.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btnConfiguraçãoBD.ForeColor = System.Drawing.Color.Black
+        Me.btnConfiguraçãoBD.Location = New System.Drawing.Point(15, 393)
+        Me.btnConfiguraçãoBD.Name = "btnConfiguraçãoBD"
+        Me.btnConfiguraçãoBD.Size = New System.Drawing.Size(163, 42)
+        Me.btnConfiguraçãoBD.TabIndex = 7
+        Me.btnConfiguraçãoBD.Text = "Configuração de BD"
+        Me.btnConfiguraçãoBD.UseVisualStyleBackColor = False
         '
         'btnRelaMovimentos
         '
@@ -224,11 +263,12 @@ Partial Class FrmPrincipal
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.GroupBox1.Controls.Add(Me.Panel3)
+        Me.GroupBox1.Controls.Add(Me.btnProcessarSaida)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 47)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(837, 489)
+        Me.GroupBox1.Size = New System.Drawing.Size(837, 557)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Movimento de Produtos"
@@ -251,7 +291,7 @@ Partial Class FrmPrincipal
         Me.Panel3.Controls.Add(Me.txtNomeProduto)
         Me.Panel3.Location = New System.Drawing.Point(36, 96)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(415, 393)
+        Me.Panel3.Size = New System.Drawing.Size(415, 370)
         Me.Panel3.TabIndex = 51
         '
         'dgvProdutos
@@ -404,7 +444,7 @@ Partial Class FrmPrincipal
         Me.Panel2.Controls.Add(Me.btnRemoverTudo)
         Me.Panel2.Location = New System.Drawing.Point(6, 19)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(356, 423)
+        Me.Panel2.Size = New System.Drawing.Size(356, 412)
         Me.Panel2.TabIndex = 51
         '
         'Label1
@@ -426,7 +466,7 @@ Partial Class FrmPrincipal
         Me.listvAD.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.listvAD.HideSelection = False
         Me.listvAD.HoverSelection = True
-        Me.listvAD.Location = New System.Drawing.Point(3, 10)
+        Me.listvAD.Location = New System.Drawing.Point(3, 5)
         Me.listvAD.Name = "listvAD"
         Me.listvAD.Size = New System.Drawing.Size(346, 202)
         Me.listvAD.TabIndex = 0
@@ -480,7 +520,7 @@ Partial Class FrmPrincipal
         Me.GroupBox2.Controls.Add(Me.Panel1)
         Me.GroupBox2.Location = New System.Drawing.Point(23, 35)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(434, 454)
+        Me.GroupBox2.Size = New System.Drawing.Size(434, 448)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Produtos"
@@ -505,7 +545,7 @@ Partial Class FrmPrincipal
         Me.btnProcurarProd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnProcurarProd.Location = New System.Drawing.Point(333, 3)
         Me.btnProcurarProd.Name = "btnProcurarProd"
-        Me.btnProcurarProd.Size = New System.Drawing.Size(75, 23)
+        Me.btnProcurarProd.Size = New System.Drawing.Size(75, 25)
         Me.btnProcurarProd.TabIndex = 0
         Me.btnProcurarProd.Text = "Procurar"
         Me.btnProcurarProd.UseVisualStyleBackColor = True
@@ -526,9 +566,10 @@ Partial Class FrmPrincipal
         '
         Me.txtProcuraProd.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtProcuraProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProcuraProd.Location = New System.Drawing.Point(140, 5)
         Me.txtProcuraProd.Name = "txtProcuraProd"
-        Me.txtProcuraProd.Size = New System.Drawing.Size(187, 20)
+        Me.txtProcuraProd.Size = New System.Drawing.Size(187, 22)
         Me.txtProcuraProd.TabIndex = 1
         '
         'rbCodigo
@@ -550,39 +591,164 @@ Partial Class FrmPrincipal
         Me.btnProcessarSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen
         Me.btnProcessarSaida.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.btnProcessarSaida.ForeColor = System.Drawing.Color.Transparent
-        Me.btnProcessarSaida.Location = New System.Drawing.Point(669, 531)
+        Me.btnProcessarSaida.Location = New System.Drawing.Point(668, 499)
         Me.btnProcessarSaida.Name = "btnProcessarSaida"
         Me.btnProcessarSaida.Size = New System.Drawing.Size(163, 42)
         Me.btnProcessarSaida.TabIndex = 50
         Me.btnProcessarSaida.Text = "Processar Saida"
         Me.btnProcessarSaida.UseVisualStyleBackColor = False
         '
-        'btnConfiguraçãoBD
+        'MenuStrip1
         '
-        Me.btnConfiguraçãoBD.BackColor = System.Drawing.SystemColors.Control
-        Me.btnConfiguraçãoBD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(194, Byte), Integer))
-        Me.btnConfiguraçãoBD.FlatAppearance.BorderSize = 2
-        Me.btnConfiguraçãoBD.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.btnConfiguraçãoBD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray
-        Me.btnConfiguraçãoBD.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.btnConfiguraçãoBD.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.btnConfiguraçãoBD.ForeColor = System.Drawing.Color.Black
-        Me.btnConfiguraçãoBD.Location = New System.Drawing.Point(15, 393)
-        Me.btnConfiguraçãoBD.Name = "btnConfiguraçãoBD"
-        Me.btnConfiguraçãoBD.Size = New System.Drawing.Size(163, 42)
-        Me.btnConfiguraçãoBD.TabIndex = 7
-        Me.btnConfiguraçãoBD.Text = "Configuração de BD"
-        Me.btnConfiguraçãoBD.UseVisualStyleBackColor = False
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastrosToolStripMenuItem, Me.ProdutoToolStripMenuItem1, Me.ClientesToolStripMenuItem1, Me.FornecedoresToolStripMenuItem1, Me.MovimentosToolStripMenuItem, Me.RelatoriosToolStripMenuItem, Me.ConfiguraçõesToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1074, 24)
+        Me.MenuStrip1.TabIndex = 51
+        Me.MenuStrip1.Text = "Produto"
+        '
+        'CadastrosToolStripMenuItem
+        '
+        Me.CadastrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProdutoToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.FornecedoresToolStripMenuItem})
+        Me.CadastrosToolStripMenuItem.Name = "CadastrosToolStripMenuItem"
+        Me.CadastrosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.CadastrosToolStripMenuItem.Text = "Cadastros"
+        '
+        'ProdutoToolStripMenuItem
+        '
+        Me.ProdutoToolStripMenuItem.Name = "ProdutoToolStripMenuItem"
+        Me.ProdutoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ProdutoToolStripMenuItem.Text = "Produto"
+        '
+        'ClientesToolStripMenuItem
+        '
+        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ClientesToolStripMenuItem.Text = "Clientes"
+        '
+        'FornecedoresToolStripMenuItem
+        '
+        Me.FornecedoresToolStripMenuItem.Name = "FornecedoresToolStripMenuItem"
+        Me.FornecedoresToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.FornecedoresToolStripMenuItem.Text = "Fornecedores"
+        '
+        'ProdutoToolStripMenuItem1
+        '
+        Me.ProdutoToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroDeProdutoToolStripMenuItem, Me.EstatisticaToolStripMenuItem})
+        Me.ProdutoToolStripMenuItem1.Name = "ProdutoToolStripMenuItem1"
+        Me.ProdutoToolStripMenuItem1.Size = New System.Drawing.Size(62, 20)
+        Me.ProdutoToolStripMenuItem1.Text = "Produto"
+        '
+        'CadastroDeProdutoToolStripMenuItem
+        '
+        Me.CadastroDeProdutoToolStripMenuItem.Name = "CadastroDeProdutoToolStripMenuItem"
+        Me.CadastroDeProdutoToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CadastroDeProdutoToolStripMenuItem.Text = "Cadastro de Produto"
+        '
+        'EstatisticaToolStripMenuItem
+        '
+        Me.EstatisticaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LucroToolStripMenuItem, Me.StockToolStripMenuItem})
+        Me.EstatisticaToolStripMenuItem.Name = "EstatisticaToolStripMenuItem"
+        Me.EstatisticaToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.EstatisticaToolStripMenuItem.Text = "Estatistica"
+        '
+        'LucroToolStripMenuItem
+        '
+        Me.LucroToolStripMenuItem.Name = "LucroToolStripMenuItem"
+        Me.LucroToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LucroToolStripMenuItem.Text = "Lucro"
+        '
+        'StockToolStripMenuItem
+        '
+        Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
+        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockToolStripMenuItem.Text = "Stock"
+        '
+        'ClientesToolStripMenuItem1
+        '
+        Me.ClientesToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroDeClientesToolStripMenuItem, Me.ContaCorrenteToolStripMenuItem})
+        Me.ClientesToolStripMenuItem1.Name = "ClientesToolStripMenuItem1"
+        Me.ClientesToolStripMenuItem1.Size = New System.Drawing.Size(61, 20)
+        Me.ClientesToolStripMenuItem1.Text = "Clientes"
+        '
+        'CadastroDeClientesToolStripMenuItem
+        '
+        Me.CadastroDeClientesToolStripMenuItem.Name = "CadastroDeClientesToolStripMenuItem"
+        Me.CadastroDeClientesToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.CadastroDeClientesToolStripMenuItem.Text = "Cadastro de Clientes"
+        '
+        'FornecedoresToolStripMenuItem1
+        '
+        Me.FornecedoresToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroDeFornecedoresToolStripMenuItem, Me.ContaCorrenteDeFornecedoresToolStripMenuItem, Me.PagamentoDoFornecedorToolStripMenuItem})
+        Me.FornecedoresToolStripMenuItem1.Name = "FornecedoresToolStripMenuItem1"
+        Me.FornecedoresToolStripMenuItem1.Size = New System.Drawing.Size(90, 20)
+        Me.FornecedoresToolStripMenuItem1.Text = "Fornecedores"
+        '
+        'CadastroDeFornecedoresToolStripMenuItem
+        '
+        Me.CadastroDeFornecedoresToolStripMenuItem.Name = "CadastroDeFornecedoresToolStripMenuItem"
+        Me.CadastroDeFornecedoresToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.CadastroDeFornecedoresToolStripMenuItem.Text = "Cadastro de Fornecedores"
+        '
+        'ContaCorrenteDeFornecedoresToolStripMenuItem
+        '
+        Me.ContaCorrenteDeFornecedoresToolStripMenuItem.Name = "ContaCorrenteDeFornecedoresToolStripMenuItem"
+        Me.ContaCorrenteDeFornecedoresToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.ContaCorrenteDeFornecedoresToolStripMenuItem.Text = "Conta Corrente de Fornecedores"
+        '
+        'PagamentoDoFornecedorToolStripMenuItem
+        '
+        Me.PagamentoDoFornecedorToolStripMenuItem.Name = "PagamentoDoFornecedorToolStripMenuItem"
+        Me.PagamentoDoFornecedorToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.PagamentoDoFornecedorToolStripMenuItem.Text = "Pagamento do Fornecedor"
+        '
+        'ContaCorrenteToolStripMenuItem
+        '
+        Me.ContaCorrenteToolStripMenuItem.Name = "ContaCorrenteToolStripMenuItem"
+        Me.ContaCorrenteToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.ContaCorrenteToolStripMenuItem.Text = "Conta Corrente"
+        '
+        'MovimentosToolStripMenuItem
+        '
+        Me.MovimentosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MovimentoDeSaidaToolStripMenuItem, Me.MovimentoDeEntradaToolStripMenuItem})
+        Me.MovimentosToolStripMenuItem.Name = "MovimentosToolStripMenuItem"
+        Me.MovimentosToolStripMenuItem.Size = New System.Drawing.Size(86, 20)
+        Me.MovimentosToolStripMenuItem.Text = "Movimentos"
+        '
+        'MovimentoDeSaidaToolStripMenuItem
+        '
+        Me.MovimentoDeSaidaToolStripMenuItem.Name = "MovimentoDeSaidaToolStripMenuItem"
+        Me.MovimentoDeSaidaToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.MovimentoDeSaidaToolStripMenuItem.Text = "Movimento de Saida"
+        '
+        'MovimentoDeEntradaToolStripMenuItem
+        '
+        Me.MovimentoDeEntradaToolStripMenuItem.Name = "MovimentoDeEntradaToolStripMenuItem"
+        Me.MovimentoDeEntradaToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.MovimentoDeEntradaToolStripMenuItem.Text = "Movimento de Entrada"
+        '
+        'RelatoriosToolStripMenuItem
+        '
+        Me.RelatoriosToolStripMenuItem.Name = "RelatoriosToolStripMenuItem"
+        Me.RelatoriosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.RelatoriosToolStripMenuItem.Text = "Relatorios"
+        '
+        'ConfiguraçõesToolStripMenuItem
+        '
+        Me.ConfiguraçõesToolStripMenuItem.Name = "ConfiguraçõesToolStripMenuItem"
+        Me.ConfiguraçõesToolStripMenuItem.Size = New System.Drawing.Size(96, 20)
+        Me.ConfiguraçõesToolStripMenuItem.Text = "Configurações"
         '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(1074, 585)
+        Me.ClientSize = New System.Drawing.Size(1074, 616)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnProcessarSaida)
         Me.Controls.Add(Me.Guna2GroupBox1)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmPrincipal"
         Me.Text = "Home"
         Me.Guna2GroupBox1.ResumeLayout(False)
@@ -596,7 +762,10 @@ Partial Class FrmPrincipal
         Me.GroupBox2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnClientes As System.Windows.Forms.Button
@@ -640,4 +809,26 @@ Partial Class FrmPrincipal
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents btnConfiguraçãoBD As System.Windows.Forms.Button
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents CadastrosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProdutoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FornecedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProdutoToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CadastroDeProdutoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EstatisticaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LucroToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StockToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClientesToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CadastroDeClientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FornecedoresToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CadastroDeFornecedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ContaCorrenteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ContaCorrenteDeFornecedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PagamentoDoFornecedorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MovimentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MovimentoDeSaidaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MovimentoDeEntradaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RelatoriosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConfiguraçõesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -13,7 +13,7 @@ Public Class ClienteDAO
 
     End Sub
 
-    Public Overloads Function carregarDados() As ArrayList
+    Public Overloads Function carregarDadosAccess() As ArrayList
         openConnectionAccess()
         sql = "SELECT * FROM cliente"
         Dim lista As New ArrayList
@@ -32,6 +32,27 @@ Public Class ClienteDAO
         End Try
         Return lista
         conexaoAccess.Close()
+    End Function
+
+    Public Function carregarDadosMysql() As ArrayList
+        openConnectionMysql()
+        sql = "SELECT * FROM cliente"
+        Dim lista As New ArrayList
+        Try
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            dataReaderMysql = commandMysql.ExecuteReader()
+            Do While dataReaderMysql.Read = True
+                Dim cl As New Cliente
+                cl.NomeCliente = dataReaderMysql(0)
+                cl.NuitCliente = dataReaderMysql(1)
+                cl.MoradaCliente = dataReaderMysql(2)
+                lista.Add(cl)
+            Loop
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+        Return lista
     End Function
 
     Public Overloads Sub carregarDados(dgvCliente As DataGridView)
@@ -117,7 +138,7 @@ Public Class ClienteDAO
         conexaoMysql.Close()
     End Sub
 
-    Public Sub delete(ByVal cliente As Cliente)
+    Public Sub deleteAccess(ByVal cliente As Cliente)
         Try
             openConnectionAccess()
             sql = "DELETE FROM cliente WHERE nuit=?"
@@ -145,7 +166,7 @@ Public Class ClienteDAO
         conexaoMysql.Close()
     End Sub
 
-    Public Function search_nuit(ByVal nuit As String) As Cliente
+    Public Function search_nuitAccess(ByVal nuit As String) As Cliente
         openConnectionAccess()
         sql = "SELECT * FROM cliente WHERE nuit =?"
         Dim cl As New Cliente
@@ -163,6 +184,26 @@ Public Class ClienteDAO
         End Try
         Return cl
         conexaoAccess.Close()
+    End Function
+
+    Public Function search_nuitMysql(ByVal nuit As String) As Cliente
+        openConnectionMysql()
+        sql = "SELECT * FROM cliente WHERE nuit =?"
+        Dim cl As New Cliente
+        Try
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nuit", nuit)
+            dataReaderMysql = commandMysql.ExecuteReader()
+            Do While dataReaderMysql.Read = True
+                cl.NomeCliente = dataReaderMysql(0)
+                cl.NuitCliente = dataReaderMysql(1)
+                cl.MoradaCliente = dataReaderMysql(2)
+            Loop
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        Return cl
+        conexaoMysql.Close()
     End Function
 
 End Class

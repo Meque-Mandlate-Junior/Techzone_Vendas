@@ -8,6 +8,15 @@
         txtTotal.Text = ""
         listvAD.Clear()
     End Sub
+    Public Sub PreencheDGVProdutos()
+        Dim rpProd As New ReposityProduto
+        Dim lista As New ArrayList
+        dgvProdutos.Rows.Clear()
+        lista = rpProd.returnDados()
+        For Each produto As Produto In lista
+            dgvProdutos.Rows.Add(produto.codigoProduto, produto.nomeProduto, produto.precoVendaProduto)
+        Next
+    End Sub
     Private Sub btnTipoMovimento_Click(sender As Object, e As EventArgs) Handles btnTipoMovimento.Click
         FrmTipoMovimento.ShowDialog()
     End Sub
@@ -22,8 +31,7 @@
     End Sub
 
     Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim DAO As New ProdutoDAO
-        DAO.carregarDados(dgvProdutos)
+        PreencheDGVProdutos()
     End Sub
 
     Private Sub btnProcurarProduto_Click(sender As Object, e As EventArgs) Handles btnProcurarProduto.Click
@@ -200,5 +208,61 @@
 
     Private Sub btnConfiguraçãoBD_Click(sender As Object, e As EventArgs) Handles btnConfiguraçãoBD.Click
         frmConfiguracaoesBD.Show()
+    End Sub
+
+    Private Sub listvAD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listvAD.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub FornecedoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles FornecedoresToolStripMenuItem1.Click
+        FrmFornecedor.ShowDialog()
+    End Sub
+
+    Private Sub ProdutoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProdutoToolStripMenuItem.Click
+        FrmProduto.ShowDialog()
+    End Sub
+
+    Private Sub FornecedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FornecedoresToolStripMenuItem.Click
+        FrmFornecedor.ShowDialog()
+    End Sub
+
+    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
+        FrmCliente.ShowDialog()
+    End Sub
+
+    Private Sub CadastroDeProdutoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroDeProdutoToolStripMenuItem.Click
+        FrmProduto.ShowDialog()
+    End Sub
+
+    Private Sub LucroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LucroToolStripMenuItem.Click
+        FrmControlProduto.ShowDialog()
+    End Sub
+
+    Private Sub StockToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockToolStripMenuItem.Click
+        FrmStock.ShowDialog()
+    End Sub
+
+    Private Sub CadastroDeClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroDeClientesToolStripMenuItem.Click
+        FrmCliente.ShowDialog()
+    End Sub
+
+    Private Sub ContaCorrenteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContaCorrenteToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub CadastroDeFornecedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroDeFornecedoresToolStripMenuItem.Click
+        FrmFornecedor.ShowDialog()
+    End Sub
+
+    Private Sub MovimentoDeEntradaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MovimentoDeEntradaToolStripMenuItem.Click
+        FrmMovimentoEntrada.ShowDialog()
+    End Sub
+
+    Private Sub RelatoriosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RelatoriosToolStripMenuItem.Click
+        FrmFiltroRelatorio.ShowDialog()
+    End Sub
+
+    Private Sub ConfiguraçõesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfiguraçõesToolStripMenuItem.Click
+        frmConfiguracaoesBD.ShowDialog()
     End Sub
 End Class

@@ -1,8 +1,13 @@
 ﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
+
 Public Class TipoMovimentoDAO
     Private command As OleDbCommand
     Private sql As String
     Private dataReader As OleDbDataReader
+    Private commandMysql As MySqlCommand
+    Private dataReaderMysql As MySqlDataReader
+
     Public Sub New()
 
     End Sub
@@ -59,10 +64,26 @@ Public Class TipoMovimentoDAO
         conexaoAccess.Close()
     End Sub
 
+
+    Public Sub insertMysql(ByVal mov As TipoMovimento)
+        Try
+            openConnectionMysql()
+            sql = "INSERT INTO tipoMovimento(nome,operacao) VALUES(?,?)"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nome", mov.nomeTM)
+            commandMysql.Parameters.AddWithValue("operacao", mov.operacaoTM)
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("INSERIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
+    End Sub
+
     Public Sub update(ByVal mov As TipoMovimento, ByVal nome As Long)
         Try
             sql = "UPDATE tipoMovimento SET nome=?,operacao=? WHERE nome=?"
-            openConnectionAccess()
+            openConnectionMysql()
             command = New OleDbCommand(sql, conexaoAccess)
             command.Parameters.AddWithValue("nome", mov.nomeTM)
             command.Parameters.AddWithValue("operacao", mov.operacaoTM)
@@ -72,7 +93,23 @@ Public Class TipoMovimentoDAO
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        conexaoAccess.Close()
+        conexaoMysql.Close()
+    End Sub
+
+    Public Sub updateMysql(ByVal mov As TipoMovimento, ByVal nome As Long)
+        Try
+            sql = "UPDATE tipoMovimento SET nome=?,operacao=? WHERE nome=?"
+            openConnectionMysql()
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nome", mov.nomeTM)
+            commandMysql.Parameters.AddWithValue("operacao", mov.operacaoTM)
+            commandMysql.Parameters.AddWithValue("nome", nome)
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("ACTUALIZADO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
     Public Sub delete(ByVal mov As TipoMovimento)
@@ -87,6 +124,20 @@ Public Class TipoMovimentoDAO
             MessageBox.Show(ex.Message)
         End Try
         conexaoAccess.Close()
+    End Sub
+
+    Public Sub deleteMysql(ByVal mov As TipoMovimento)
+        Try
+            openConnectionMysql()
+            sql = "DELETE FROM tipoMovimento WHERE nome=?"
+            commandMysql = New MySqlCommand(sql, conexaoMysql)
+            commandMysql.Parameters.AddWithValue("nome", mov.nomeTM)
+            commandMysql.ExecuteNonQuery()
+            MessageBox.Show("REMOVIDO COM SUCESSO")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        conexaoMysql.Close()
     End Sub
 
     Public Function search_nome(ByVal nome As String) As TipoMovimento
